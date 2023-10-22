@@ -1,0 +1,46 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="center-div"><br>
+    <div class="container">
+        <div class="py-5 text-center bg-white text-dark">
+    <h2 class="mb-3">Upload an Image </h2><br>
+    <form method="post" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        {{form}} 
+        <input type="submit" class="btn btn-primary" value="Upload">
+    </form>
+    </div>
+    </div>
+</div>
+<head>
+    <style>
+        .center-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-div"><br>
+        <div class="container">
+            <div class="py-5 text-center bg-white text-dark">
+                <h2 class="mb-3">Upload an Image{{ output_text }}</h2><br>
+                <form method="post" enctype="multipart/form-data" action="{% url 'plate' %}">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit" class="btn btn-primary" >Apply OCR</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</div><br>
+
+
+    
+{% endblock %}
